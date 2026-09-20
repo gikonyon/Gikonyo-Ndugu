@@ -93,12 +93,18 @@ elif page == "1. Governance & ESG Intelligence":
             Chartered, KCB, and NCBA.
             """
         )
+        st.markdown(
+            "📄 **Journal Article:** [View Publication on EAJBE](https://journals.eanso.org/index.php/index/search/authors/view?firstName=Gikonyo&middleName=&lastName=Ndugu&affiliation=Independent%20Researcher&country=KE)"
+        )
     with st.expander("🌫️ NBO-AirPulse-ESG"):
         st.write(
             "Automated pipeline tracking real-time pollution indicators across Nairobi, "
             "translating environmental data into actionable ESG and sustainability insights."
         )
-        st.markdown("[View on GitHub](https://github.com/gikonyo-ndugu/NBO-AirPulse-ESG)")
+        st.markdown(
+            "🚀 [Launch Live Application](https://nbo-airpulse-esg-giegbbgvbu9eziq8aibd2d.streamlit.app/) | "
+            "🐙 [View on GitHub](https://github.com/gikonyo-ndugu/NBO-AirPulse-ESG)"
+        )
 
 
 # ---------- Product 2 ----------
