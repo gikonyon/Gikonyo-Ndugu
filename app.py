@@ -6,9 +6,11 @@ st.set_page_config(
     layout="wide",
 )
 
-# ---------- Sidebar navigation ----------
+# ---------- Sidebar Navigation ----------
+st.sidebar.image("Gikonyo.jfif", use_container_width=True)
 st.sidebar.title("Gikonyo Ndugu")
 st.sidebar.caption("Development Finance, ESG & Digital Solutions")
+
 page = st.sidebar.radio(
     "Navigate",
     [
@@ -27,10 +29,16 @@ st.sidebar.markdown("📍 Nairobi, Kenya")
 st.sidebar.markdown("📧 [Ndugu.Gikonyo@hotmail.com](mailto:Ndugu.Gikonyo@hotmail.com)")
 st.sidebar.markdown("🔗 [LinkedIn](https://linkedin.com/in/gikonyo-ndugu)")
 
+
 # ---------- Home ----------
 if page == "Home":
-    st.title("Gikonyo Ndugu")
-    st.subheader("I build what I recommend.")
+    col_img, col_title = st.columns([1, 4])
+    with col_img:
+        st.image("Gikonyo.jfif", use_container_width=True)
+    with col_title:
+        st.title("Gikonyo Ndugu")
+        st.subheader("I build what I recommend.")
+
     st.write(
         """
         I sit at the intersection of **development finance, ESG governance, and applied data
@@ -63,6 +71,7 @@ if page == "Home":
     c2.metric("Vehicle-Financing Wait Time Cut", "6 → 3 months")
     c3.metric("Sales Revenue via New Service Line", "+13%")
 
+
 # ---------- Product 1 ----------
 elif page == "1. Governance & ESG Intelligence":
     st.title("1️⃣ Sovereign Governance & ESG Intelligence Engine")
@@ -91,6 +100,7 @@ elif page == "1. Governance & ESG Intelligence":
         )
         st.markdown("[View on GitHub](https://github.com/gikonyo-ndugu/NBO-AirPulse-ESG)")
 
+
 # ---------- Product 2 ----------
 elif page == "2. Macro-Financial & Risk Analytics":
     st.title("2️⃣ Macro-Financial & Risk Analytics Matrix")
@@ -118,6 +128,7 @@ elif page == "2. Macro-Financial & Risk Analytics":
             "Two-phase analytical research on county budget execution across Kenya's devolved "
             "system, delivered as a submission-ready academic paper with 33 verified references."
         )
+
 
 # ---------- Product 3 ----------
 elif page == "3. Rapid Prototyping & Automation":
@@ -149,6 +160,7 @@ elif page == "3. Rapid Prototyping & Automation":
         )
         st.markdown("[Visit clicknbuy.shop](https://clicknbuy.shop)")
 
+
 # ---------- Product 4 ----------
 elif page == "4. Institutional Strategy & Advisory":
     st.title("4️⃣ Institutional Strategy & Advisory Retainer")
@@ -178,6 +190,7 @@ elif page == "4. Institutional Strategy & Advisory":
             "concerns into institutional decisions."
         )
 
+
 # ---------- Credentials ----------
 elif page == "Credentials":
     st.title("Credentials & Background")
@@ -201,11 +214,12 @@ elif page == "Credentials":
     st.markdown("### Tools")
     st.write("Power BI, SQL Server, Python, ETL Tools, Tableau, SAP, Google Cloud, Office 365, Streamlit, Git")
 
+
 # ---------- Contact ----------
 elif page == "Contact":
     st.title("Available for Engagements")
     st.write("I take on consulting retainers, project-based builds, and institutional partnerships.")
-    st.write("📧 Ndugu.Gikonyo@hotmail.com")
+    st.write("📧 [Ndugu.Gikonyo@hotmail.com](mailto:Ndugu.Gikonyo@hotmail.com)")
     st.write("📱 +254 723 462 232")
     st.write("🔗 [linkedin.com/in/gikonyo-ndugu](https://linkedin.com/in/gikonyo-ndugu)")
     st.write("📍 Nairobi, Kenya")
