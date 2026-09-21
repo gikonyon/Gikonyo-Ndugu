@@ -19,6 +19,7 @@ page = st.sidebar.radio(
         "2. Macro-Financial & Risk Analytics",
         "3. Rapid Prototyping & Automation",
         "4. Institutional Strategy & Advisory",
+        "Recommendations",
         "Credentials",
         "Contact",
     ],
@@ -93,18 +94,12 @@ elif page == "1. Governance & ESG Intelligence":
             Chartered, KCB, and NCBA.
             """
         )
-        st.markdown(
-            "📄 **Journal Article:** [View Publication on EAJBE](https://journals.eanso.org/index.php/index/search/authors/view?firstName=Gikonyo&middleName=&lastName=Ndugu&affiliation=Independent%20Researcher&country=KE)"
-        )
     with st.expander("🌫️ NBO-AirPulse-ESG"):
         st.write(
             "Automated pipeline tracking real-time pollution indicators across Nairobi, "
             "translating environmental data into actionable ESG and sustainability insights."
         )
-        st.markdown(
-            "🚀 [Launch Live Application](https://nbo-airpulse-esg-giegbbgvbu9eziq8aibd2d.streamlit.app/) | "
-            "🐙 [View on GitHub](https://github.com/gikonyo-ndugu/NBO-AirPulse-ESG)"
-        )
+        st.markdown("[View on GitHub](https://github.com/gikonyo-ndugu/NBO-AirPulse-ESG)")
 
 
 # ---------- Product 2 ----------
@@ -197,6 +192,49 @@ elif page == "4. Institutional Strategy & Advisory":
         )
 
 
+# ---------- Recommendations ----------
+elif page == "Recommendations":
+    st.title("💡 Leadership & Client Recommendations")
+    st.write(
+        "Endorsements from UN leadership and clients detailing performance, technical execution, "
+        "and commitment to continuous learning."
+    )
+
+    with st.container(border=True):
+        col1, col2 = st.columns([1, 3])
+        with col1:
+            st.markdown("### Achire Daniel")
+            st.caption("Contracts Management Officer at UNSOS")
+            st.caption("🗓️ September 7, 2026")
+            st.caption("🤝 Client Relationship")
+        with col2:
+            st.markdown(
+                """
+                > "I am pleased to recommend Gikonyo Ndugu. Gikonyo is a highly skilled help desk and workshop technician with a strong customer-service mindset. In my experience, he never hesitates to assist—he is always available, highly responsive, and approaches every IT problem with professionalism and patience.
+                > 
+                > What sets him apart is that he goes beyond just fixing the immediate issue. He takes time to find the root cause, ensures everything is working properly, and makes sure you understand how to avoid the issue in the future. He is a dedicated, dependable, and solution-driven technician. I recommend him without reservation."
+                """
+            )
+
+    st.markdown("")
+
+    with st.container(border=True):
+        col1, col2 = st.columns([1, 3])
+        with col1:
+            st.markdown("### Paul Gimsay")
+            st.caption("Chief ICT Operations Management, FTS at UNSOS")
+            st.caption("🗓️ October 28, 2020")
+            st.caption("👔 Direct Supervisor")
+        with col2:
+            st.markdown(
+                """
+                > "I directly supervised Gikonyo since July 2015 at the United Nations Nairobi Support Office of the United Nations Support Office in Somalia. Giks, as we call him, is driven and focused. He understood the concept of Customer first and was always on hand to support clients. He exhibited the right temperament, maturity and calmness when handling difficult situations.
+                > 
+                > As the digital space continues to evolve, he invested time and resources to learn new skills (Data Science and Analytics). Always willing to learn, he has the potential to grow."
+                """
+            )
+
+
 # ---------- Credentials ----------
 elif page == "Credentials":
     st.title("Credentials & Background")
@@ -225,23 +263,7 @@ elif page == "Credentials":
 elif page == "Contact":
     st.title("Available for Engagements")
     st.write("I take on consulting retainers, project-based builds, and institutional partnerships.")
-
-    st.markdown("---")
-
-    col_photo, col_details, col_qr = st.columns([1.2, 2.5, 1.3])
-
-    with col_photo:
-        st.image("Gikonyo.jfif", use_container_width=True)
-
-    with col_details:
-        st.markdown("### **Gikonyo Ndugu**")
-        st.markdown("**Solutions Provider — Development Finance, ESG & Digital Tools**")
-        st.markdown("📍 Nairobi, Kenya")
-        st.markdown("📧 [Ndugu.Gikonyo@hotmail.com](mailto:Ndugu.Gikonyo@hotmail.com)")
-        st.markdown("📱 [+254 723 462 232](tel:+254723462232)")
-        st.markdown("🔗 [linkedin.com/in/gikonyo-ndugu](https://linkedin.com/in/gikonyo-ndugu)")
-
-    with col_qr:
-        st.image("QR CODE GIKONYO.jpg", use_container_width=True, caption="Scan for Live Portfolio")
-
-    st.markdown("---")
+    st.write("📧 [Ndugu.Gikonyo@hotmail.com](mailto:Ndugu.Gikonyo@hotmail.com)")
+    st.write("📱 +254 723 462 232")
+    st.write("🔗 [linkedin.com/in/gikonyo-ndugu](https://linkedin.com/in/gikonyo-ndugu)")
+    st.write("📍 Nairobi, Kenya")
