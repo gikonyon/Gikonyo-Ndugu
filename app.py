@@ -99,7 +99,7 @@ elif page == "1. Governance & ESG Intelligence":
             "Automated pipeline tracking real-time pollution indicators across Nairobi, "
             "translating environmental data into actionable ESG and sustainability insights."
         )
-        st.markdown("[View on GitHub](https://github.com/gikonyo-ndugu/NBO-AirPulse-ESG)")
+        st.markdown("[Launch Live App](https://nbo-airpulse-esg-giegbbgvbu9eziq8aibd2d.streamlit.app/)")
 
 
 # ---------- Product 2 ----------
@@ -141,12 +141,13 @@ elif page == "3. Rapid Prototyping & Automation":
         "enterprise IT development cycles."
     )
     st.markdown("### Proof of work")
-    with st.expander("🤖 Stima Mshirika Bot", expanded=True):
+    with st.expander("🤖 Mshirika AI tool", expanded=True):
         st.write(
             "NLTK/Keras neural-network chatbot for Stima SACCO member services, with a "
             "production-ready intents design covering 18 intents and escalation routing to "
             "customer care."
         )
+        st.markdown("[Launch Live App](https://stima-mshirika-bot-7pev7pohh8ypfwnawr2nhv.streamlit.app/)")
         st.markdown("[View on GitHub](https://github.com/gikonyo-ndugu/stima-mshirika-bot)")
     with st.expander("🇰🇪 Kenya 2060 Framework Dashboard"):
         st.write(
