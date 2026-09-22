@@ -94,6 +94,8 @@ elif page == "1. Governance & ESG Intelligence":
             Chartered, KCB, and NCBA.
             """
         )
+        st.markdown("📄 **Journal Publication:** Published in the *East African Journal of Business and Economics* — *'Beyond Sustainability Narratives: A Forensic Algorithm for Verifying Governance and Environmental Data Integrity under IFRS S1 and IFRS S2'*.[cite: 8]")
+        st.markdown("[Launch Live App](https://ifrs-forensic-assurance.streamlit.app/)[cite: 8]")
     with st.expander("🌫️ NBO-AirPulse-ESG"):
         st.write(
             "Automated pipeline tracking real-time pollution indicators across Nairobi, "
@@ -147,8 +149,18 @@ elif page == "3. Rapid Prototyping & Automation":
             "production-ready intents design covering 18 intents and escalation routing to "
             "customer care."
         )
-        st.markdown("[Launch Live App](https://stima-mshirika-bot-7pev7pohh8ypfwnawr2nhv.streamlit.app/)")
+        st.markdown("[Launch Live App](https://stima-mshirika-bot-7pev7pohh8ypfwnawr2nhv.streamlit.app/)[cite: 7]")
         st.markdown("[View on GitHub](https://github.com/gikonyo-ndugu/stima-mshirika-bot)")
+    with st.expander("📱 Digital & Financial Inclusion: The Digital Grid 2026"):
+        st.write(
+            """
+            Applying global digital inclusion frameworks to Nairobi's informal sector (MSMEs, 
+            Mama Mbogas, Boda Boda riders, Jua Kali artisans). Demonstrating how accessible mobile-first 
+            tools (Google Sheets, Drive, Gemini AI) convert smartphones into workstation hubs for inventory tracking, 
+            record vaulting, and market price discovery to drive true economic inclusion.
+            """
+        )
+        st.markdown("[Read LinkedIn Update](https://www.linkedin.com/feed/update/urn:li:activity:7440515694074527744/)[cite: 9]")
     with st.expander("🇰🇪 Kenya 2060 Framework Dashboard"):
         st.write(
             "Interactive Streamlit dashboard mapping all 47 counties across nine functional "
@@ -173,7 +185,17 @@ elif page == "4. Institutional Strategy & Advisory":
         "technical software engineering teams."
     )
     st.markdown("### Proof of work")
-    with st.expander("🇰🇪 Kenya 2060 Regional Industrial Co-Reliance Framework", expanded=True):
+    with st.expander("💡 Grassroots Digital Inclusion & Financial Enablement", expanded=True):
+        st.write(
+            """
+            Framework paper and initiative demonstrating how enterprise digital enablement 
+            concepts (showcased at the Field Technology Conference / FTS) can be adapted for informal micro-enterprises 
+            ('mtaani'). Focuses on data awareness, tech inclusivity, and low-barrier digital tools to bridge the gap 
+            between corporate IT systems and bottom-of-the-pyramid economic empowerment.
+            """
+        )
+        st.markdown("[View Article / Discussion on LinkedIn](https://www.linkedin.com/feed/update/urn:li:activity:7440515694074527744/)[cite: 9]")
+    with st.expander("🇰🇪 Kenya 2060 Regional Industrial Co-Reliance Framework"):
         st.write(
             "A national economic development framework spanning industrial specialization, "
             "partner-country alignment, social infrastructure targets, and an ESG/data "
