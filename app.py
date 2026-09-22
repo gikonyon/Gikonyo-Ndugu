@@ -1,171 +1,294 @@
 import streamlit as st
-import pandas as pd
-import numpy as np
-import plotly.express as px
 
-# --- PAGE CONFIGURATION ---
 st.set_page_config(
-    page_title="CIC Asset Management | BD Analytics Suite",
-    page_icon="📈",
+    page_title="Gikonyo Ndugu | Solutions Provider — Development Finance, ESG & Digital Tools",
+    page_icon="🧩",
     layout="wide",
-    initial_sidebar_state="expanded"
 )
 
-# --- CUSTOM BRANDING CSS ---
-st.markdown("""
-    <style>
-    .main-header {
-        color: #B81C24;
-        font-size: 26px;
-        font-weight: 700;
-        margin-bottom: 2px;
-    }
-    .sub-header {
-        color: #475569;
-        font-size: 14px;
-        margin-bottom: 20px;
-    }
-    .metric-card {
-        background-color: #FFFFFF;
-        border-left: 5px solid #B81C24;
-        padding: 15px;
-        border-radius: 6px;
-        box-shadow: 0px 2px 5px rgba(0,0,0,0.05);
-    }
-    </style>
-""", unsafe_allow_dict=True)
+# ---------- Sidebar Navigation ----------
+st.sidebar.image("Gikonyo.jfif", use_container_width=True)
+st.sidebar.title("Gikonyo Ndugu")
+st.sidebar.caption("Development Finance, ESG & Digital Solutions")
 
-# --- HEADER SECTION ---
-st.markdown('<p class="main-header">CIC ASSET MANAGEMENT (CICAM)</p>', unsafe_allow_dict=True)
-st.markdown('<p class="sub-header">Business Development & Institutional Client Engagement Engine | Prepared for James Njagi</p>', unsafe_allow_dict=True)
-st.divider()
-
-# --- SIDEBAR FILTERS ---
-st.sidebar.header("🎯 Target Product & Portfolio")
-selected_fund = st.sidebar.selectbox(
-    "Select Investment Vehicle",
+page = st.sidebar.radio(
+    "Navigate",
     [
-        "CIC Money Market Fund (MMF)",
-        "CIC Wealth Fund",
-        "CIC Fixed Income Fund",
-        "CIC Dollar Fund",
-        "Institutional Pension Scheme"
-    ]
+        "Home",
+        "1. Governance & ESG Intelligence",
+        "2. Macro-Financial & Risk Analytics",
+        "3. Rapid Prototyping & Automation",
+        "4. Institutional Strategy & Advisory",
+        "Recommendations",
+        "Credentials",
+        "Contact",
+    ],
 )
 
-investment_horizon = st.sidebar.slider("Investment Horizon (Years)", 1, 10, 5)
-initial_capital = st.sidebar.number_input("Proposed Initial Allocation (KES)", min_value=100000, value=25000000, step=1000000)
+st.sidebar.markdown("---")
+st.sidebar.markdown("📍 Nairobi, Kenya")
+st.sidebar.markdown("📧 [Ndugu.Gikonyo@hotmail.com](mailto:Ndugu.Gikonyo@hotmail.com)")
+st.sidebar.markdown("🔗 [LinkedIn](https://linkedin.com/in/gikonyo-ndugu)")
 
-# Product Yield Benchmark Mapping
-fund_yields = {
-    "CIC Money Market Fund (MMF)": 0.135,
-    "CIC Wealth Fund": 0.148,
-    "CIC Fixed Income Fund": 0.152,
-    "CIC Dollar Fund": 0.065,
-    "Institutional Pension Scheme": 0.128
-}
 
-current_rate = fund_yields[selected_fund]
+# ---------- Home ----------
+if page == "Home":
+    col_img, col_title = st.columns([1, 4])
+    with col_img:
+        st.image("Gikonyo.jfif", use_container_width=True)
+    with col_title:
+        st.title("Gikonyo Ndugu")
+        st.subheader("I build what I recommend.")
 
-# --- TOP METRIC CARDS ---
-c1, c2, c3, c4 = st.columns(4)
-with c1:
-    st.markdown('<div class="metric-card">', unsafe_allow_dict=True)
-    st.metric("Effective Gross Yield", f"{current_rate*100:.2f}%", "+0.45% vs Industry")
-    st.markdown('</div>', unsafe_allow_dict=True)
+    st.write(
+        """
+        I sit at the intersection of **development finance, ESG governance, and applied data
+        engineering** — 10+ years across the UN system and cooperative banking, with a track
+        record of turning strategic problems into working software rather than just slide decks.
 
-with c2:
-    st.markdown('<div class="metric-card">', unsafe_allow_dict=True)
-    st.metric("CICAM CIS Market Share", "13.50%", "Rank #1 Market Leader")
-    st.markdown('</div>', unsafe_allow_dict=True)
-
-with c3:
-    st.markdown('<div class="metric-card">', unsafe_allow_dict=True)
-    st.metric("Total Group AUM", "KES 194.0 B", "+11.2% YOY Growth")
-    st.markdown('</div>', unsafe_allow_dict=True)
-
-with c4:
-    st.markdown('<div class="metric-card">', unsafe_allow_dict=True)
-    projected_val = initial_capital * ((1 + current_rate) ** investment_horizon)
-    st.metric(f"Projected {investment_horizon}-Yr Value", f"KES {projected_val/1e6:,.1f} M")
-    st.markdown('</div>', unsafe_allow_dict=True)
-
-st.markdown("<br>", unsafe_allow_dict=True)
-
-# --- WORKFLOW TABS ---
-tab1, tab2, tab3 = st.tabs(["📊 Yield Performance & Projections", "🤝 SACCO & Channel Growth", "📄 Executive Pitch Briefing"])
-
-with tab1:
-    st.subheader("Asset Growth & Compounding Trajectory")
-    
-    months = np.arange(1, (investment_horizon * 12) + 1)
-    monthly_rate = (1 + current_rate) ** (1/12) - 1
-    compound_values = initial_capital * ((1 + monthly_rate) ** months)
-    
-    df_chart = pd.DataFrame({
-        "Month": months,
-        "Projected Portfolio Value": compound_values,
-        "Principal Capital": initial_capital
-    })
-    
-    fig_comp = px.line(
-        df_chart,
-        x="Month",
-        y=["Projected Portfolio Value", "Principal Capital"],
-        labels={"value": "Value (KES)", "variable": "Portfolio Strategy"},
-        title=f"Yield Growth Modeling over {investment_horizon} Years ({selected_fund})",
-        color_discrete_sequence=["#B81C24", "#64748B"]
+        Below is my product suite: four ways I can plug into an institution's problem, each backed
+        by real, delivered work — not just a services list.
+        """
     )
-    fig_comp.update_layout(template="plotly_white")
-    st.plotly_chart(fig_comp, use_container_width=True)
 
-with tab2:
-    st.subheader("Distribution Channels & SACCO Pipeline")
-    
-    df_channels = pd.DataFrame({
-        "Distribution Channel": ["Tier-1 SACCOs", "Agri-Cooperative Societies", "Corporate Pension Schemes", "High-Net-Worth Individuals", "Direct Retail"],
-        "AUM Contribution (KES B)": [45.2, 28.4, 62.1, 38.0, 20.3],
-        "YOY Growth (%)": [14.2, 18.5, 8.7, 12.1, 22.0]
-    })
-    
-    col_g1, col_g2 = st.columns([3, 2])
-    with col_g1:
-        fig_bar = px.bar(
-            df_channels,
-            x="Distribution Channel",
-            y="AUM Contribution (KES B)",
-            color="YOY Growth (%)",
-            title="AUM Breakdown Across Key Business Development Channels",
-            color_continuous_scale="Reds"
+    col1, col2, col3, col4 = st.columns(4)
+    with col1:
+        st.markdown("### 1️⃣ Governance & ESG")
+        st.caption("Audit-ready ESG & regulatory data integrity")
+    with col2:
+        st.markdown("### 2️⃣ Macro-Financial Analytics")
+        st.caption("Risk models & executive dashboards")
+    with col3:
+        st.markdown("### 3️⃣ Rapid Prototyping")
+        st.caption("Streamlit tools & automation, shipped fast")
+    with col4:
+        st.markdown("### 4️⃣ Strategy & Advisory")
+        st.caption("Boardroom-to-build-team bridging")
+
+    st.markdown("---")
+    st.metric("ESG Data Accuracy Boost (UNSOS)", "+31%")
+    c1, c2, c3 = st.columns(3)
+    c1.metric("Decision Efficiency (Power BI)", "+26%")
+    c2.metric("Vehicle-Financing Wait Time Cut", "6 → 3 months")
+    c3.metric("Sales Revenue via New Service Line", "+13%")
+
+
+# ---------- Product 1 ----------
+elif page == "1. Governance & ESG Intelligence":
+    st.title("1️⃣ Sovereign Governance & ESG Intelligence Engine")
+    st.write(
+        "**What it is:** Policy, ESG, and regulatory compliance frameworks that audit data "
+        "integrity (IFRS S1/S2) and mitigate institutional risk.\n\n"
+        "**Value:** Replaces vague sustainability claims with verifiable, audit-ready data "
+        "structures for institutions and cooperatives."
+    )
+    st.markdown("### Proof of work")
+    with st.expander("🔎 Uujuzi Forensic ESG & Assurance Engine", expanded=True):
+        st.write(
+            """
+            Python/Streamlit RegTech tool implementing a peer-reviewed forensic algorithm for
+            verifying governance and environmental data integrity under IFRS S1/S2. Five-module
+            pipeline: Ingestion → Audit/Standards Cross-Reference → Quantitative Reconciliation →
+            GIS Spatial Audit → Report Synthesizer, with evidence-tier scoring (Tier 1–4) and
+            attribution risk assessment for sustainability claims. Tested against Standard
+            Chartered, KCB, and NCBA.
+            """
         )
-        st.plotly_chart(fig_bar, use_container_width=True)
-    
-    with col_g2:
-        st.write("### Channel Metrics")
-        st.dataframe(df_channels, hide_index=True, use_container_width=True)
+        st.markdown("📄 **Journal Publication:** Published in the *East African Journal of Business and Economics* — *'Beyond Sustainability Narratives: A Forensic Algorithm for Verifying Governance and Environmental Data Integrity under IFRS S1 and IFRS S2'*.[cite: 8]")
+        st.markdown("[Launch Live App](https://ifrs-forensic-assurance.streamlit.app/)[cite: 8]")
+    with st.expander("🌫️ NBO-AirPulse-ESG"):
+        st.write(
+            "Automated pipeline tracking real-time pollution indicators across Nairobi, "
+            "translating environmental data into actionable ESG and sustainability insights."
+        )
+        st.markdown("[Launch Live App](https://nbo-airpulse-esg-giegbbgvbu9eziq8aibd2d.streamlit.app/)")
 
-with tab3:
-    st.subheader("Generate Tailored Pitch Summary")
-    
-    client_name = st.text_input("Target Institution Name", "Stima SACCO / Corporate Client")
-    proposed_allocation_pct = st.slider("Target Allocation to CICAM (%)", 10, 100, 50)
-    
-    if st.button("Generate Proposal Pitch Summary"):
-        allocated_capital = (proposed_allocation_pct / 100.0) * initial_capital
-        st.success(f"Proposal generated for **{client_name}**")
-        st.code(f"""
-======================================================================
-EXECUTIVE PITCH BRIEFING: INSTITUTIONAL ASSET MANAGEMENT
-Target Client: {client_name}
-Selected Strategy: {selected_fund}
-Total Portfolio Commitment: KES {initial_capital:,.2f}
-Proposed CICAM Allocation ({proposed_allocation_pct}%): KES {allocated_capital:,.2f}
 
-STRATEGIC HIGHLIGHTS FOR BD ENGAGEMENT:
-1. Capital Preservation & Security: Underlying assets secured by top-tier Treasury instruments and bank deposits.
-2. Yield Alpha: Yield benchmarked at {current_rate*100:.2f}% p.a. delivering competitive risk-adjusted returns.
-3. Liquidity Support: Seamless withdrawal workflows and integration via M-Pesa Paybill 600118 and RTGS.
-======================================================================
-        """, language="text")
+# ---------- Product 2 ----------
+elif page == "2. Macro-Financial & Risk Analytics":
+    st.title("2️⃣ Macro-Financial & Risk Analytics Matrix")
+    st.write(
+        "**What it is:** Macroeconomic forecasting models, liquidity/risk analysis, and "
+        "automated financial dashboards (Power BI, Python, SQL).\n\n"
+        "**Value:** Converts raw economic and financial data into executive-level decision "
+        "matrices."
+    )
+    st.markdown("### Proof of work")
+    with st.expander("📊 UN Support Office Somalia — Power BI Dashboards", expanded=True):
+        st.write(
+            "Designed and automated Power BI dashboards giving real-time visibility of risk and "
+            "performance indicators — lifted management decision-making efficiency by 26% and "
+            "ESG-related data accuracy by 31%."
+        )
+    with st.expander("💳 Stima SACCO Creditworthiness Model"):
+        st.write(
+            "Pioneered a data-driven creditworthiness model using AI and Big Data to evaluate "
+            "member risk, supporting a vehicle-financing pilot that cut wait times from 6 to 3 "
+            "months and a repayment/joint-ownership structure for Uber drivers."
+        )
+    with st.expander("📄 Kenyan Fiscal Decentralization Paper"):
+        st.write(
+            "Two-phase analytical research on county budget execution across Kenya's devolved "
+            "system, delivered as a submission-ready academic paper with 33 verified references."
+        )
 
-st.caption("CIC Asset Management Business Development Analytics Prototype | Ready for Streamlit Cloud")
+
+# ---------- Product 3 ----------
+elif page == "3. Rapid Prototyping & Automation":
+    st.title("3️⃣ Rapid Prototyping & Automation Suite")
+    st.write(
+        "**What it is:** End-to-end digital tools, custom Streamlit applications, and workflow "
+        "automation built to solve operational bottlenecks.\n\n"
+        "**Value:** Delivers lightweight, high-impact software without waiting on lengthy "
+        "enterprise IT development cycles."
+    )
+    st.markdown("### Proof of work")
+    with st.expander("🤖 Mshirika AI tool", expanded=True):
+        st.write(
+            "NLTK/Keras neural-network chatbot for Stima SACCO member services, with a "
+            "production-ready intents design covering 18 intents and escalation routing to "
+            "customer care."
+        )
+        st.markdown("[Launch Live App](https://stima-mshirika-bot-7pev7pohh8ypfwnawr2nhv.streamlit.app/)[cite: 7]")
+        st.markdown("[View on GitHub](https://github.com/gikonyo-ndugu/stima-mshirika-bot)")
+    with st.expander("🇰🇪 Kenya 2060 Framework Dashboard"):
+        st.write(
+            "Interactive Streamlit dashboard mapping all 47 counties across nine functional "
+            "regions of a national industrial co-reliance framework — industrial specializations, "
+            "social infrastructure targets, and an ESG/data governance layer."
+        )
+        st.markdown("[Launch Live App](https://kenya-2060-regional-industrial-co-reliance-framework-eldsvsmcd.streamlit.app/)")
+    with st.expander("📱 Digital & Financial Inclusion: The Digital Grid 2026"):
+        st.write(
+            """
+            Applying global digital inclusion frameworks to Nairobi's informal sector (MSMEs, 
+            Mama Mbogas, Boda Boda riders, Jua Kali artisans). Demonstrating how accessible mobile-first 
+            tools (Google Sheets, Drive, Gemini AI) convert smartphones into workstation hubs for inventory tracking, 
+            record vaulting, and market price discovery to drive true economic inclusion.
+            """
+        )
+        st.markdown("[Read LinkedIn Update](https://www.linkedin.com/feed/update/urn:li:activity:7440515694074527744/)[cite: 9]")
+    with st.expander("🛒 Click N Buy"):
+        st.write(
+            "Live consumer e-commerce and price-comparison platform for Chinese commodities in "
+            "Kenya, with vendor onboarding and a payment settlement framework."
+        )
+        st.markdown("[Visit clicknbuy.shop](https://clicknbuy.shop)")
+
+
+# ---------- Product 4 ----------
+elif page == "4. Institutional Strategy & Advisory":
+    st.title("4️⃣ Institutional Strategy & Advisory Retainer")
+    st.write(
+        "**What it is:** Strategic advisory covering digital enablement, cooperative-sector "
+        "policy development, and cross-functional leadership.\n\n"
+        "**Value:** Bridges the gap between executive boardrooms, field operations, and "
+        "technical software engineering teams."
+    )
+    st.markdown("### Proof of work")
+    with st.expander("🇰🇪 Kenya 2060 Regional Industrial Co-Reliance Framework", expanded=True):
+        st.write(
+            "A national economic development framework spanning industrial specialization, "
+            "partner-country alignment, social infrastructure targets, and an ESG/data "
+            "governance layer — drafted for direct engagement with national policymakers."
+        )
+        st.markdown("[Launch Interactive Dashboard](https://kenya-2060-regional-industrial-co-reliance-framework-eldsvsmcd.streamlit.app/)")
+    with st.expander("💡 Grassroots Digital Inclusion & Financial Enablement"):
+        st.write(
+            """
+            Framework paper and initiative demonstrating how enterprise digital enablement 
+            concepts (showcased at the Field Technology Conference / FTS) can be adapted for informal micro-enterprises 
+            ('mtaani'). Focuses on data awareness, tech inclusivity, and low-barrier digital tools to bridge the gap 
+            between corporate IT systems and bottom-of-the-pyramid economic empowerment.
+            """
+        )
+        st.markdown("[View Article / Discussion on LinkedIn](https://www.linkedin.com/feed/update/urn:li:activity:7440515694074527744/)[cite: 9]")
+    with st.expander("🌍 Somalia Cooperative Finance Initiative (SCSRA/SHERF)"):
+        st.write(
+            "Proposing a SASRA-equivalent regulatory body for Somalia's Sharia-compliant "
+            "cooperative sector, with an active funder and partner network spanning FSD Africa, "
+            "ACCOSCA, WOCCU, USAID, and the World Bank/IFAD."
+        )
+    with st.expander("🏛️ Elected Delegate, Stima SACCO Chamaa Nairobi Zone"):
+        st.write(
+            "Represents member interests at board level, engaging with SACCO leadership on "
+            "strategic and governance matters — direct experience translating field-level "
+            "concerns into institutional decisions."
+        )
+
+
+# ---------- Recommendations ----------
+elif page == "Recommendations":
+    st.title("💡 Leadership & Client Recommendations")
+    st.write(
+        "Endorsements from UN leadership and clients detailing performance, technical execution, "
+        "and commitment to continuous learning."
+    )
+
+    with st.container(border=True):
+        col1, col2 = st.columns([1, 3])
+        with col1:
+            st.markdown("### Achire Daniel")
+            st.caption("Contracts Management Officer at UNSOS")
+            st.caption("🗓️ September 7, 2026")
+            st.caption("🤝 Client Relationship")
+        with col2:
+            st.markdown(
+                """
+                > "I am pleased to recommend Gikonyo Ndugu. Gikonyo is a highly skilled help desk and workshop technician with a strong customer-service mindset. In my experience, he never hesitates to assist—he is always available, highly responsive, and approaches every IT problem with professionalism and patience.
+                > 
+                > What sets him apart is that he goes beyond just fixing the immediate issue. He takes time to find the root cause, ensures everything is working properly, and makes sure you understand how to avoid the issue in the future. He is a dedicated, dependable, and solution-driven technician. I recommend him without reservation."
+                """
+            )
+
+    st.markdown("")
+
+    with st.container(border=True):
+        col1, col2 = st.columns([1, 3])
+        with col1:
+            st.markdown("### Paul Gimsay")
+            st.caption("Chief ICT Operations Management, FTS at UNSOS")
+            st.caption("🗓️ October 28, 2020")
+            st.caption("👔 Direct Supervisor")
+        with col2:
+            st.markdown(
+                """
+                > "I directly supervised Gikonyo since July 2015 at the United Nations Nairobi Support Office of the United Nations Support Office in Somalia. Giks, as we call him, is driven and focused. He understood the concept of Customer first and was always on hand to support clients. He exhibited the right temperament, maturity and calmness when handling difficult situations.
+                > 
+                > As the digital space continues to evolve, he invested time and resources to learn new skills (Data Science and Analytics). Always willing to learn, he has the potential to grow."
+                """
+            )
+
+
+# ---------- Credentials ----------
+elif page == "Credentials":
+    st.title("Credentials & Background")
+    st.markdown("### Experience")
+    st.write(
+        """
+        - **Business Relation Management Assistant** — CTG (UN Support Office Somalia), May 2024–Present
+        - **Business Analyst (Delegate, Chamaa Nairobi Zone)** — Stima SACCO, March 2023–Present
+        - **Infrastructure Technician** — Trigyn Technologies (UN Support Office Somalia), Apr 2022–May 2024
+        - **Business Analyst** — Farmers Basket Kenya, Jul 2016–Oct 2022
+        """
+    )
+    st.markdown("### Education")
+    st.write(
+        """
+        - MSc Development Finance — KCA University, 2024
+        - Professional Master's Degree in Visual Analytics & Big Data — TECH Global University, 2024
+        - BSc (Hons) Applied Business Computing — University of Sunderland, 2017
+        """
+    )
+    st.markdown("### Tools")
+    st.write("Power BI, SQL Server, Python, ETL Tools, Tableau, SAP, Google Cloud, Office 365, Streamlit, Git")
+
+
+# ---------- Contact ----------
+elif page == "Contact":
+    st.title("Available for Engagements")
+    st.write("I take on consulting retainers, project-based builds, and institutional partnerships.")
+    st.write("📧 [Ndugu.Gikonyo@hotmail.com](mailto:Ndugu.Gikonyo@hotmail.com)")
+    st.write("📱 +254 723 462 232")
+    st.write("🔗 [linkedin.com/in/gikonyo-ndugu](https://linkedin.com/in/gikonyo-ndugu)")
+    st.write("📍 Nairobi, Kenya")
