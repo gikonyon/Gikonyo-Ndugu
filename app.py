@@ -151,6 +151,13 @@ elif page == "3. Rapid Prototyping & Automation":
         )
         st.markdown("[Launch Live App](https://stima-mshirika-bot-7pev7pohh8ypfwnawr2nhv.streamlit.app/)[cite: 7]")
         st.markdown("[View on GitHub](https://github.com/gikonyo-ndugu/stima-mshirika-bot)")
+    with st.expander("🇰🇪 Kenya 2060 Framework Dashboard"):
+        st.write(
+            "Interactive Streamlit dashboard mapping all 47 counties across nine functional "
+            "regions of a national industrial co-reliance framework — industrial specializations, "
+            "social infrastructure targets, and an ESG/data governance layer."
+        )
+        st.markdown("[Launch Live App](https://kenya-2060-regional-industrial-co-reliance-framework-eldsvsmcd.streamlit.app/)")
     with st.expander("📱 Digital & Financial Inclusion: The Digital Grid 2026"):
         st.write(
             """
@@ -161,12 +168,6 @@ elif page == "3. Rapid Prototyping & Automation":
             """
         )
         st.markdown("[Read LinkedIn Update](https://www.linkedin.com/feed/update/urn:li:activity:7440515694074527744/)[cite: 9]")
-    with st.expander("🇰🇪 Kenya 2060 Framework Dashboard"):
-        st.write(
-            "Interactive Streamlit dashboard mapping all 47 counties across nine functional "
-            "regions of a national industrial co-reliance framework — industrial specializations, "
-            "social infrastructure targets, and an ESG/data governance layer."
-        )
     with st.expander("🛒 Click N Buy"):
         st.write(
             "Live consumer e-commerce and price-comparison platform for Chinese commodities in "
@@ -185,7 +186,14 @@ elif page == "4. Institutional Strategy & Advisory":
         "technical software engineering teams."
     )
     st.markdown("### Proof of work")
-    with st.expander("💡 Grassroots Digital Inclusion & Financial Enablement", expanded=True):
+    with st.expander("🇰🇪 Kenya 2060 Regional Industrial Co-Reliance Framework", expanded=True):
+        st.write(
+            "A national economic development framework spanning industrial specialization, "
+            "partner-country alignment, social infrastructure targets, and an ESG/data "
+            "governance layer — drafted for direct engagement with national policymakers."
+        )
+        st.markdown("[Launch Interactive Dashboard](https://kenya-2060-regional-industrial-co-reliance-framework-eldsvsmcd.streamlit.app/)")
+    with st.expander("💡 Grassroots Digital Inclusion & Financial Enablement"):
         st.write(
             """
             Framework paper and initiative demonstrating how enterprise digital enablement 
@@ -195,12 +203,6 @@ elif page == "4. Institutional Strategy & Advisory":
             """
         )
         st.markdown("[View Article / Discussion on LinkedIn](https://www.linkedin.com/feed/update/urn:li:activity:7440515694074527744/)[cite: 9]")
-    with st.expander("🇰🇪 Kenya 2060 Regional Industrial Co-Reliance Framework"):
-        st.write(
-            "A national economic development framework spanning industrial specialization, "
-            "partner-country alignment, social infrastructure targets, and an ESG/data "
-            "governance layer — drafted for direct engagement with national policymakers."
-        )
     with st.expander("🌍 Somalia Cooperative Finance Initiative (SCSRA/SHERF)"):
         st.write(
             "Proposing a SASRA-equivalent regulatory body for Somalia's Sharia-compliant "
